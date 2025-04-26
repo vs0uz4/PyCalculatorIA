@@ -86,4 +86,25 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 - Ajuste para limpar corretamente a expressão e o resultado ao pressionar 'AC'.
 
+## [1.2.0] - 2024-06-07
+
+### ✨ Melhorias e Novidades
+- Refatoração completa do layout dos botões para uso exclusivo de `st.button` e `st.columns`, eliminando grids HTML customizados.
+- Responsividade aprimorada e alinhamento perfeito dos botões em todos os tamanhos de tela.
+- Display da calculadora com gradiente suave, sombra, borda e texto em negrito para maior destaque e legibilidade.
+- Botões AC e = destacados em laranja intermediário (`#FFA726`), com hover mais claro, usando `type="primary"` do Streamlit.
+- Botões de operação (+, −, ×, ÷) em azul claro (`#64B5F6`), com hover azul mais intenso, usando `type="secondary"`.
+- Remoção de todos os tooltips e resíduos de experimentos antigos (HTML customizado, scripts JS, query params, etc).
+- CSS customizado limpo, robusto e fácil de manter, aproveitando os tipos nativos de botão do Streamlit.
+- Código organizado: funções utilitárias no topo, layout do display e botões em sequência lógica.
+
+### 🐞 Correções
+- Corrigido erro de função indefinida (`update_display`) ao clicar nos botões.
+- Corrigido problema de hover verde sobrescrevendo as cores personalizadas dos botões.
+- Corrigido desalinhamento e diferenças visuais entre botões causados por tooltips e HTML customizado.
+
+### 🧹 Limpeza e Refatoração
+- Remoção de todo o código legado de grid HTML, scripts JS, tooltips e experimentos antigos.
+- Garantia de que apenas o layout nativo do Streamlit é utilizado para máxima compatibilidade e manutenção.
+
 [1.0.0]: https://github.com/vs0uz4/PyCalculatorIA/releases/tag/v1.0.0 

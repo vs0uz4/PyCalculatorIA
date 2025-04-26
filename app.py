@@ -34,26 +34,23 @@ st.markdown("""
         font-weight: 500 !important;
     }
     
-    .stButton>button:hover {
-        transform: scale(1.05) !important;
-        background-color: #4CAF50 !important;
-        color: white !important;
-    }
-    
     .stButton>button:active {
         transform: scale(0.95) !important;
     }
     
     /* Estilo moderno para o display */
     .calculator-display {
-        background-color: var(--background-color);
+        background: linear-gradient(135deg, #f5faff 60%, #e3f0ff 100%);
         border-radius: 10px;
         padding: 20px;
         margin-bottom: 20px;
         font-family: 'Courier New', Courier, monospace;
         font-size: 2em;
         text-align: right;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.08), 0 1.5px 4px rgba(0,0,0,0.06);
+        border: 1.5px solid #e3f0ff;
+        color: #222;
+        font-weight: bold;
     }
 
     /* Estilos específicos para botões de operação */
@@ -61,18 +58,43 @@ st.markdown("""
         font-size: 1.2em !important;
     }
 
-    /* Botões de operação com cores diferentes */
-    .stButton>button[data-testid="btn_plus"],
-    .stButton>button[data-testid="btn_minus"],
-    .stButton>button[data-testid="btn_multiply"],
-    .stButton>button[data-testid="btn_divide"],
-    .stButton>button[data-testid="btn_equals"] {
-        background-color: #2196F3 !important;
+    /* Botões de operação com azul mais claro */
+    .stButton > button[data-testid="btn_plus"],
+    .stButton > button[data-testid="btn_minus"],
+    .stButton > button[data-testid="btn_multiply"],
+    .stButton > button[data-testid="btn_divide"] {
+        background-color: #64B5F6 !important;
         color: white !important;
+        border: none !important;
     }
-
+    .stButton > button[data-testid="btn_plus"]:focus,
+    .stButton > button[data-testid="btn_minus"]:focus,
+    .stButton > button[data-testid="btn_multiply"]:focus,
+    .stButton > button[data-testid="btn_divide"]:focus,
+    .stButton > button[data-testid="btn_plus"]:active,
+    .stButton > button[data-testid="btn_minus"]:active,
+    .stButton > button[data-testid="btn_multiply"]:active,
+    .stButton > button[data-testid="btn_divide"]:active {
+        background-color: #64B5F6 !important;
+        color: white !important;
+        border: none !important;
+    }
+    /* Botões AC e resultado (=) em laranja mais forte */
+    .stButton > button[data-testid="btn_clear"],
+    .stButton > button[data-testid="btn_equals"] {
+        background-color: #FF6F00 !important;
+        color: white !important;
+        border: none !important;
+    }
+    .stButton > button[data-testid="btn_clear"]:focus,
+    .stButton > button[data-testid="btn_equals"]:focus,
+    .stButton > button[data-testid="btn_clear"]:active,
+    .stButton > button[data-testid="btn_equals"]:active {
+        background-color: #FF6F00 !important;
+        color: white !important;
+        border: none !important;
+    }
     /* Botões de controle com cores diferentes */
-    .stButton>button[data-testid="btn_clear"],
     .stButton>button[data-testid="btn_plusminus"],
     .stButton>button[data-testid="btn_percent"] {
         background-color: #FF9800 !important;
@@ -135,67 +157,43 @@ st.markdown("""
         margin-right: 0 !important;
         max-width: 100vw !important;
     }
-    .calculator-grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.5rem !important;
-        width: 100% !important;
-        max-width: 400px !important;
-        margin: 0 auto 1.5rem auto !important;
-        justify-items: stretch !important;
-        align-items: stretch !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
+
+    /* Hover para botões de operação (azul claro) */
+    .stButton > button[data-testid="btn_plus"]:hover,
+    .stButton > button[data-testid="btn_minus"]:hover,
+    .stButton > button[data-testid="btn_multiply"]:hover,
+    .stButton > button[data-testid="btn_divide"]:hover {
+        background-color: #42a5f5 !important;
+        color: white !important;
+        transform: scale(1.05) !important;
     }
-    .calc-btn {
-        width: 100% !important;
-        height: 100% !important;
-        font-size: 1.2em !important;
-        border-radius: 8px !important;
-        border: 1.5px solid #ddd !important;
-        background: #fff !important;
-        color: #222 !important;
-        font-family: 'Inter', sans-serif !important;
-        font-weight: 500 !important;
-        transition: all 0.2s !important;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
-        box-sizing: border-box !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        min-width: 0 !important;
-        min-height: 0 !important;
+    /* Hover para botões AC e = (laranja forte) */
+    .stButton > button[data-testid="btn_clear"]:hover,
+    .stButton > button[data-testid="btn_equals"]:hover {
+        background-color: #FF9800 !important;
+        color: white !important;
+        transform: scale(1.05) !important;
     }
-    .calc-btn:active {
-        background: #e3e3e3;
+
+    /* Botão primary (AC e =) em laranja intermediário */
+    button[kind="primary"] {
+        background-color: #FFA726 !important;
+        color: white !important;
+        border: none !important;
     }
-    .btn-AC, .btn-plusminus, .btn-percent {
-        background: #FF9800;
-        color: #fff;
-        border: none;
+    button[kind="primary"]:hover, button[kind="primary"]:focus, button[kind="primary"]:active {
+        background-color: #FFCC80 !important;
+        color: white !important;
     }
-    .btn-divide, .btn-multiply, .btn-minus, .btn-plus, .btn-equals {
-        background: #2196F3;
-        color: #fff;
-        border: none;
+    /* Botão secondary (demais) em azul claro */
+    button[kind="secondary"] {
+        background-color: #64B5F6 !important;
+        color: white !important;
+        border: none !important;
     }
-    .btn-equals {
-        border: 2px solid #f44336;
-        background: #fff;
-        color: #f44336;
-    }
-    @media (max-width: 500px) {
-        .calculator-grid {
-            max-width: 100vw !important;
-            gap: 0.3rem !important;
-        }
-        .calc-btn {
-            font-size: 1em !important;
-        }
-    }
-    @media (max-width: 350px) {
-        .calculator-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-        }
+    button[kind="secondary"]:hover, button[kind="secondary"]:focus, button[kind="secondary"]:active {
+        background-color: #42a5f5 !important;
+        color: white !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -221,19 +219,6 @@ if 'show_result' not in st.session_state:
 # Função utilitária para exibir operadores matemáticos tradicionais na expressão
 def beautify_expression(expr):
     return expr.replace('*', '×').replace('/', '÷')
-
-# Display da calculadora
-if st.session_state.show_result:
-    display_content = st.session_state.display
-else:
-    # Mostra a expressão se houver, senão o display
-    display_content = beautify_expression(st.session_state.expression) if st.session_state.expression else st.session_state.display
-
-st.markdown(f"""
-    <div class="calculator-display">
-        {display_content}
-    </div>
-""", unsafe_allow_html=True)
 
 # Função para atualizar o display e a expressão
 def update_display(value):
@@ -323,12 +308,25 @@ def perform_operation(op):
     except Exception as e:
         st.error(f"Erro: {str(e)}")
 
-# Layout dos botões em colunas
+# Display da calculadora
+if st.session_state.show_result:
+    display_content = st.session_state.display
+else:
+    # Mostra a expressão se houver, senão o display
+    display_content = beautify_expression(st.session_state.expression) if st.session_state.expression else st.session_state.display
+
+st.markdown(f"""
+    <div class="calculator-display">
+        {display_content}
+    </div>
+""", unsafe_allow_html=True)
+
+# Layout dos botões em colunas usando st.columns e st.button, sem tooltips
 col1, col2, col3, col4 = st.columns(4)
 
 # Primeira linha
 with col1:
-    if st.button("AC", use_container_width=True, key="btn_clear", help="Limpar"):
+    if st.button("AC", use_container_width=True, key="btn_clear", type="primary"):
         st.session_state.display = "0"
         st.session_state.memory = None
         st.session_state.operator = None
@@ -336,134 +334,81 @@ with col1:
         st.session_state.expression = ""
         st.session_state.show_result = False
         st.rerun()
-
 with col2:
-    if st.button("⁺∕₋", use_container_width=True, key="btn_plusminus", help="Inverter sinal"):
+    if st.button("⁺∕₋", use_container_width=True, key="btn_plusminus"):
         if st.session_state.display != "0":
             if st.session_state.display.startswith("-"):
                 st.session_state.display = st.session_state.display[1:]
             else:
                 st.session_state.display = "-" + st.session_state.display
             st.rerun()
-
 with col3:
-    if st.button("％", use_container_width=True, key="btn_percent", help="Porcentagem"):
+    if st.button("％", use_container_width=True, key="btn_percent"):
         current = float(st.session_state.display)
         st.session_state.display = str(current / 100)
         st.rerun()
-
 with col4:
-    if st.button("÷", use_container_width=True, key="btn_divide", help="Divisão"):
+    if st.button("÷", use_container_width=True, key="btn_divide"):
         perform_operation("/")
 
 # Segunda linha
 with col1:
     if st.button("7", use_container_width=True, key="btn_7"):
         update_display("7")
-
 with col2:
     if st.button("8", use_container_width=True, key="btn_8"):
         update_display("8")
-
 with col3:
     if st.button("9", use_container_width=True, key="btn_9"):
         update_display("9")
-
 with col4:
-    if st.button("×", use_container_width=True, key="btn_multiply", help="Multiplicação"):
+    if st.button("×", use_container_width=True, key="btn_multiply"):
         perform_operation("*")
 
 # Terceira linha
 with col1:
     if st.button("4", use_container_width=True, key="btn_4"):
         update_display("4")
-
 with col2:
     if st.button("5", use_container_width=True, key="btn_5"):
         update_display("5")
-
 with col3:
     if st.button("6", use_container_width=True, key="btn_6"):
         update_display("6")
-
 with col4:
-    if st.button("−", use_container_width=True, key="btn_minus", help="Subtração"):
+    if st.button("−", use_container_width=True, key="btn_minus"):
         perform_operation("-")
 
 # Quarta linha
 with col1:
     if st.button("1", use_container_width=True, key="btn_1"):
         update_display("1")
-
 with col2:
     if st.button("2", use_container_width=True, key="btn_2"):
         update_display("2")
-
 with col3:
     if st.button("3", use_container_width=True, key="btn_3"):
         update_display("3")
-
 with col4:
-    if st.button("＋", use_container_width=True, key="btn_plus", help="Adição"):
+    if st.button("＋", use_container_width=True, key="btn_plus"):
         perform_operation("+")
 
 # Quinta linha
 with col1:
     if st.button("0", use_container_width=True, key="btn_0"):
         update_display("0")
-
 with col2:
-    if st.button(".", use_container_width=True, key="btn_dot", help="Ponto decimal"):
+    if st.button(".", use_container_width=True, key="btn_dot"):
         if "." not in st.session_state.display:
             st.session_state.display += "."
             st.rerun()
-
 with col3:
-    if st.button("⌫", use_container_width=True, key="btn_backspace", help="Apagar"):
+    if st.button("⌫", use_container_width=True, key="btn_backspace"):
         st.session_state.display = st.session_state.display[:-1] if len(st.session_state.display) > 1 else "0"
         st.rerun()
-
 with col4:
-    if st.button("＝", use_container_width=True, key="btn_equals", help="Igual"):
+    if st.button("＝", use_container_width=True, key="btn_equals", type="primary"):
         perform_operation("=")
-
-# Suporte a teclado via JavaScript
-components.html("""
-<script>
-document.addEventListener('keydown', function(e) {
-    const key = e.key;
-    let buttonKey = null;
-    
-    if (key >= '0' && key <= '9') {
-        buttonKey = `btn_${key}`;
-    } else if (key === '.') {
-        buttonKey = 'btn_dot';
-    } else if (key === '+') {
-        buttonKey = 'btn_plus';
-    } else if (key === '-') {
-        buttonKey = 'btn_minus';
-    } else if (key === '*') {
-        buttonKey = 'btn_multiply';
-    } else if (key === '/') {
-        buttonKey = 'btn_divide';
-    } else if (key === 'Enter' || key === '=') {
-        buttonKey = 'btn_equals';
-    } else if (key === 'Escape') {
-        buttonKey = 'btn_clear';
-    } else if (key === 'Backspace') {
-        buttonKey = 'btn_backspace';
-    }
-    
-    if (buttonKey) {
-        const button = document.querySelector(`button[data-testid="${buttonKey}"]`);
-        if (button) {
-            button.click();
-            e.preventDefault();
-        }
-    }
-});
-</script>
-""", height=0)
 
 # Rodapé com informações
 st.markdown("---")
@@ -472,48 +417,4 @@ st.markdown("""
     <p>Pressione as teclas numéricas ou operadores para usar o teclado</p>
     <p>Tema atual: {}</p>
 </div>
-""".format("Escuro" if system_theme == "dark" else "Claro"), unsafe_allow_html=True)
-
-params = st.query_params
-btn_clicked = params.get('btn', [None])[0]
-if btn_clicked:
-    st.query_params.clear()
-    # Processar ação do botão
-    if btn_clicked == "AC":
-        st.session_state.display = "0"
-        st.session_state.memory = None
-        st.session_state.operator = None
-        st.session_state.waiting_for_operand = False
-        st.session_state.expression = ""
-        st.session_state.show_result = False
-        st.rerun()
-    elif btn_clicked == "plusminus":
-        if st.session_state.display != "0":
-            if st.session_state.display.startswith("-"):
-                st.session_state.display = st.session_state.display[1:]
-            else:
-                st.session_state.display = "-" + st.session_state.display
-            st.rerun()
-    elif btn_clicked == "%":
-        current = float(st.session_state.display)
-        st.session_state.display = str(current / 100)
-        st.rerun()
-    elif btn_clicked == "/":
-        perform_operation("/")
-    elif btn_clicked == "*":
-        perform_operation("*")
-    elif btn_clicked == "-":
-        perform_operation("-")
-    elif btn_clicked == "+":
-        perform_operation("+")
-    elif btn_clicked == "=":
-        perform_operation("=")
-    elif btn_clicked == "backspace":
-        st.session_state.display = st.session_state.display[:-1] if len(st.session_state.display) > 1 else "0"
-        st.rerun()
-    elif btn_clicked == ".":
-        if "." not in st.session_state.display:
-            st.session_state.display += "."
-            st.rerun()
-    elif btn_clicked in [str(i) for i in range(10)]:
-        update_display(btn_clicked) 
+""".format("Escuro" if system_theme == "dark" else "Claro"), unsafe_allow_html=True) 
