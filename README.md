@@ -20,12 +20,14 @@ Uma calculadora moderna e responsiva construída com Python e Streamlit, com sup
 ## Instalação 🚀
 
 1. Clone o repositório:
+
 ```bash
 git clone https://github.com/seu-usuario/PyCalculatorIA.git
 cd PyCalculatorIA
 ```
 
 2. Instale as dependências:
+
 ```bash
 pip install -r requirements.txt
 ```
