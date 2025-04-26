@@ -1,6 +1,19 @@
 # PyCalculator IA 🧮
 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/vs0uz4/PyCalculatorIA)](https://github.com/vs0uz4/PyCalculatorIA/releases)
+[![GitHub all releases](https://img.shields.io/github/downloads/vs0uz4/PyCalculatorIA/total)](https://github.com/vs0uz4/PyCalculatorIA/releases)
+[![GitHub repo size](https://img.shields.io/github/repo-size/vs0uz4/PyCalculatorIA)](https://github.com/vs0uz4/PyCalculatorIA)
+[![GitHub last commit](https://img.shields.io/github/last-commit/vs0uz4/PyCalculatorIA)](https://github.com/vs0uz4/PyCalculatorIA/commits)
+[![GitHub issues](https://img.shields.io/github/issues/vs0uz4/PyCalculatorIA)](https://github.com/vs0uz4/PyCalculatorIA/issues)
+[![GitHub](https://img.shields.io/github/license/vs0uz4/PyCalculatorIA)](https://github.com/vs0uz4/PyCalculatorIA/blob/main/LICENSE)
+[![GitHub top language](https://img.shields.io/github/languages/top/vs0uz4/PyCalculatorIA)](https://github.com/vs0uz4/PyCalculatorIA)
+
 Uma calculadora moderna e responsiva construída com Python e Streamlit, com suporte a temas claro/escuro automáticos e interface amigável.
+
+## Demonstração Online 🌐
+
+Você pode testar a calculadora online através do seguinte link:
+[PyCalculator IA - Demo](https://pycalculator.streamlit.app/)
 
 ## Características ✨
 
