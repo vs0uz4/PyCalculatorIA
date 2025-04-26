@@ -115,21 +115,44 @@ if 'operator' not in st.session_state:
     st.session_state.operator = None
 if 'waiting_for_operand' not in st.session_state:
     st.session_state.waiting_for_operand = False
+if 'expression' not in st.session_state:
+    st.session_state.expression = ""
+if 'show_result' not in st.session_state:
+    st.session_state.show_result = False
+
+# Função utilitária para exibir operadores matemáticos tradicionais na expressão
+def beautify_expression(expr):
+    return expr.replace('*', '×').replace('/', '÷')
 
 # Display da calculadora
+if st.session_state.show_result:
+    display_content = st.session_state.display
+else:
+    # Mostra a expressão se houver, senão o display
+    display_content = beautify_expression(st.session_state.expression) if st.session_state.expression else st.session_state.display
+
 st.markdown(f"""
     <div class="calculator-display">
-        {st.session_state.display}
+        {display_content}
     </div>
 """, unsafe_allow_html=True)
 
-# Função para atualizar o display
+# Função para atualizar o display e a expressão
 def update_display(value):
     if st.session_state.waiting_for_operand:
         st.session_state.display = value
         st.session_state.waiting_for_operand = False
     else:
         st.session_state.display = st.session_state.display + value if st.session_state.display != "0" else value
+    # Atualiza a expressão
+    if st.session_state.show_result:
+        st.session_state.expression = value
+        st.session_state.show_result = False
+    else:
+        if st.session_state.expression and st.session_state.expression[-1] == '=':
+            st.session_state.expression = value
+        else:
+            st.session_state.expression += value
     st.rerun()
 
 # Função para formatar o número mantendo a consistência entre inteiros e decimais
@@ -149,19 +172,26 @@ def perform_operation(op):
         if st.session_state.memory is None:
             st.session_state.memory = float(st.session_state.display)
             st.session_state.operator = None if op == "=" else op
+            if op != "=":
+                st.session_state.expression += op
             st.session_state.waiting_for_operand = True
+            st.session_state.show_result = False
             st.rerun()
             return
 
         # Se estamos esperando um novo operando e não é o sinal de igual,
         # apenas atualiza o operador
         if st.session_state.waiting_for_operand and op != "=":
+            # Atualiza o último operador na expressão
+            if st.session_state.expression and st.session_state.expression[-1] in "+-*/":
+                st.session_state.expression = st.session_state.expression[:-1] + op
+            else:
+                st.session_state.expression += op
             st.session_state.operator = op
             st.rerun()
             return
 
         current_value = float(st.session_state.display)
-        
         # Realiza a operação apropriada
         if st.session_state.operator is None:
             result = current_value
@@ -175,11 +205,19 @@ def perform_operation(op):
             if current_value == 0:
                 raise ValueError("Divisão por zero não é permitida")
             result = st.session_state.memory / current_value
-        
+
         # Atualiza o display e a memória mantendo o formato apropriado
         st.session_state.display = format_number(result)
         st.session_state.memory = result
-        
+
+        # Atualiza a expressão
+        if op == "=":
+            st.session_state.expression += f"={format_number(result)}"
+            st.session_state.show_result = True
+        else:
+            st.session_state.expression += op
+            st.session_state.show_result = False
+
         # Configura o próximo operador
         st.session_state.operator = None if op == "=" else op
         st.session_state.waiting_for_operand = True
@@ -197,6 +235,8 @@ with col1:
         st.session_state.memory = None
         st.session_state.operator = None
         st.session_state.waiting_for_operand = False
+        st.session_state.expression = ""
+        st.session_state.show_result = False
         st.rerun()
 
 with col2:
