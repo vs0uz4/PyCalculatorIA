@@ -1,29 +1,23 @@
-# PyCalculatorIA
+# PyCalculator IA 🧮
 
-Uma calculadora Python moderna com interface gráfica e recursos de IA.
+Uma calculadora moderna e responsiva construída com Python e Streamlit, com suporte a temas claro/escuro automáticos e interface amigável.
 
-## Descrição
+## Características ✨
 
-PyCalculatorIA é uma calculadora desenvolvida em Python que combina funcionalidades tradicionais de uma calculadora com recursos avançados de IA. O projeto utiliza a biblioteca Tkinter para a interface gráfica e integra recursos de processamento de linguagem natural.
-
-## Funcionalidades
-
-- Interface gráfica intuitiva
+- Interface moderna e responsiva
+- Tema claro/escuro automático (baseado na preferência do sistema)
+- Animações suaves nos botões
+- Suporte completo a teclado
+- Display com fonte monoespaçada para melhor legibilidade
 - Operações matemáticas básicas
-- Processamento de comandos por voz
-- Histórico de cálculos
-- Conversão de unidades
-- Integração com IA para resolução de problemas matemáticos
+- Tratamento de erros robusto
 
-## Requisitos
+## Requisitos 📋
 
 - Python 3.8 ou superior
-- Tkinter (geralmente vem com Python)
-- SpeechRecognition
-- PyAudio
-- OpenAI
+- pip (gerenciador de pacotes Python)
 
-## Instalação
+## Instalação 🚀
 
 1. Clone o repositório:
 ```bash
@@ -31,33 +25,42 @@ git clone https://github.com/seu-usuario/PyCalculatorIA.git
 cd PyCalculatorIA
 ```
 
-2. Crie um ambiente virtual:
-```bash
-python -m venv venv
-source venv/bin/activate  # No Windows: venv\Scripts\activate
-```
-
-3. Instale as dependências:
+2. Instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Como usar
+## Como Usar 💻
 
-1. Ative o ambiente virtual:
+1. Execute o aplicativo:
 ```bash
-source venv/bin/activate  # No Windows: venv\Scripts\activate
+streamlit run app.py
 ```
 
-2. Execute o programa:
-```bash
-python main.py
-```
+2. O navegador abrirá automaticamente com a calculadora.
 
-## Contribuição
+### Atalhos de Teclado ⌨️
 
-Contribuições são bem-vindas! Por favor, sinta-se à vontade para abrir issues e pull requests.
+- Números (0-9): Digite os números diretamente
+- Operadores (+, -, *, /): Use as teclas correspondentes
+- Enter ou =: Calcular resultado
+- Esc: Limpar (C)
+- Backspace: Apagar último dígito
+- Ponto (.): Decimal
 
-## Licença
+## Contribuindo 🤝
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+## Licença 📄
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes. 
+
+## Autor 👤
+
+Seu Nome - [@seu-usuario](https://github.com/seu-usuario)
+
+## Agradecimentos 🙏
+
+- Streamlit pela excelente framework
+- Comunidade Python pelo suporte 
