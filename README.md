@@ -26,7 +26,7 @@ git clone https://github.com/seu-usuario/PyCalculatorIA.git
 cd PyCalculatorIA
 ```
 
-2. Instale as dependências:
+1. Instale as dependências:
 
 ```bash
 pip install -r requirements.txt
