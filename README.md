@@ -21,23 +21,24 @@ Uma calculadora moderna e responsiva construída com Python e Streamlit, com sup
 
 1. Clone o repositório:
 
-```bash
-git clone https://github.com/seu-usuario/PyCalculatorIA.git
-cd PyCalculatorIA
-```
+    ```bash
+    git clone https://github.com/seu-usuario/PyCalculatorIA.git
+    cd PyCalculatorIA
+    ```
 
-1. Instale as dependências:
+2. Instale as dependências:
 
-```bash
-pip install -r requirements.txt
-```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## Como Usar 💻
 
 1. Execute o aplicativo:
-```bash
-streamlit run app.py
-```
+
+    ```bash
+    streamlit run app.py
+    ```
 
 2. O navegador abrirá automaticamente com a calculadora.
 
@@ -56,13 +57,15 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou env
 
 ## Licença 📄
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes. 
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
 ## Autor 👤
 
-Seu Nome - [@seu-usuario](https://github.com/seu-usuario)
+Vitor Rodrigues - [@vs0uz4](https://github.com/vs0uz4)
 
 ## Agradecimentos 🙏
 
 - Streamlit pela excelente framework
-- Comunidade Python pelo suporte 
+- Cursor AI pela excelente ferramenta de IA
+- 21st.dev pelo Magic excelente AI Agent
+- Comunidade Python pelo suporte

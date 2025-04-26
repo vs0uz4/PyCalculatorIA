@@ -5,4 +5,3 @@ streamlit-autorefresh>=1.0.1
 streamlit-custom-notification-box>=0.1.1
 numpy>=2.2.5
 darkdetect>=0.8.0
-
