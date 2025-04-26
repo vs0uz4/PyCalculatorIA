@@ -71,4 +71,19 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 - Aplicação deployada no Streamlit Cloud
 - Disponível publicamente em: https://pycalculator.streamlit.app/
 
+## [1.1.0] - 2024-06-07
+
+### ✨ Adicionado
+
+- Exibição da expressão completa (ex: 1+5) no display enquanto o usuário digita, mostrando apenas o resultado após pressionar '='.
+- Uso de símbolos matemáticos tradicionais (× para multiplicação e ÷ para divisão) no display, mantendo os operadores originais para o cálculo.
+
+### 🎨 Visual & UX
+
+- Melhoria na experiência visual do display, tornando a visualização da operação mais intuitiva e próxima das calculadoras físicas.
+
+### 🐞 Correções
+
+- Ajuste para limpar corretamente a expressão e o resultado ao pressionar 'AC'.
+
 [1.0.0]: https://github.com/vs0uz4/PyCalculatorIA/releases/tag/v1.0.0 
