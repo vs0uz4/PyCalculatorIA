@@ -79,11 +79,38 @@ st.markdown("""
         color: white !important;
     }
     
-    /* Responsividade */
-    @media (max-width: 768px) {
+    /* Responsividade aprimorada para grid de botões */
+    .stColumns {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem !important;
+    }
+    .stColumn {
+        min-width: 60px !important;
+        max-width: 1fr !important;
+    }
+    .stButton>button {
+        min-width: 48px !important;
+        min-height: 48px !important;
+        font-size: 1.2em !important;
+    }
+    @media (max-width: 500px) {
         .calculator-display {
-            font-size: 1.5em;
-            padding: 15px;
+            font-size: 1.2em;
+            padding: 10px;
+        }
+        .stColumns {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+        .stButton>button {
+            min-width: 40px !important;
+            min-height: 40px !important;
+            font-size: 1em !important;
+        }
+    }
+    @media (max-width: 350px) {
+        .stColumns {
+            grid-template-columns: repeat(2, 1fr) !important;
         }
     }
 
@@ -98,6 +125,77 @@ st.markdown("""
     
     .title-with-icon i {
         color: #2196F3;
+    }
+
+    /* Reset de padding/margin dos pais do grid */
+    section.main > div.block-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100vw !important;
+    }
+    .calculator-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+        max-width: 400px !important;
+        margin: 0 auto 1.5rem auto !important;
+        justify-items: stretch !important;
+        align-items: stretch !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+    .calc-btn {
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 1.2em !important;
+        border-radius: 8px !important;
+        border: 1.5px solid #ddd !important;
+        background: #fff !important;
+        color: #222 !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 500 !important;
+        transition: all 0.2s !important;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+    }
+    .calc-btn:active {
+        background: #e3e3e3;
+    }
+    .btn-AC, .btn-plusminus, .btn-percent {
+        background: #FF9800;
+        color: #fff;
+        border: none;
+    }
+    .btn-divide, .btn-multiply, .btn-minus, .btn-plus, .btn-equals {
+        background: #2196F3;
+        color: #fff;
+        border: none;
+    }
+    .btn-equals {
+        border: 2px solid #f44336;
+        background: #fff;
+        color: #f44336;
+    }
+    @media (max-width: 500px) {
+        .calculator-grid {
+            max-width: 100vw !important;
+            gap: 0.3rem !important;
+        }
+        .calc-btn {
+            font-size: 1em !important;
+        }
+    }
+    @media (max-width: 350px) {
+        .calculator-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -374,4 +472,48 @@ st.markdown("""
     <p>Pressione as teclas numéricas ou operadores para usar o teclado</p>
     <p>Tema atual: {}</p>
 </div>
-""".format("Escuro" if system_theme == "dark" else "Claro"), unsafe_allow_html=True) 
+""".format("Escuro" if system_theme == "dark" else "Claro"), unsafe_allow_html=True)
+
+params = st.query_params
+btn_clicked = params.get('btn', [None])[0]
+if btn_clicked:
+    st.query_params.clear()
+    # Processar ação do botão
+    if btn_clicked == "AC":
+        st.session_state.display = "0"
+        st.session_state.memory = None
+        st.session_state.operator = None
+        st.session_state.waiting_for_operand = False
+        st.session_state.expression = ""
+        st.session_state.show_result = False
+        st.rerun()
+    elif btn_clicked == "plusminus":
+        if st.session_state.display != "0":
+            if st.session_state.display.startswith("-"):
+                st.session_state.display = st.session_state.display[1:]
+            else:
+                st.session_state.display = "-" + st.session_state.display
+            st.rerun()
+    elif btn_clicked == "%":
+        current = float(st.session_state.display)
+        st.session_state.display = str(current / 100)
+        st.rerun()
+    elif btn_clicked == "/":
+        perform_operation("/")
+    elif btn_clicked == "*":
+        perform_operation("*")
+    elif btn_clicked == "-":
+        perform_operation("-")
+    elif btn_clicked == "+":
+        perform_operation("+")
+    elif btn_clicked == "=":
+        perform_operation("=")
+    elif btn_clicked == "backspace":
+        st.session_state.display = st.session_state.display[:-1] if len(st.session_state.display) > 1 else "0"
+        st.rerun()
+    elif btn_clicked == ".":
+        if "." not in st.session_state.display:
+            st.session_state.display += "."
+            st.rerun()
+    elif btn_clicked in [str(i) for i in range(10)]:
+        update_display(btn_clicked) 
