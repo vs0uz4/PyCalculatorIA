@@ -5,6 +5,15 @@ Todas as alterações notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/),
 e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## [1.0.1] - 2024-04-26
+
+### 📚 Documentação
+
+- Adicionado CHANGELOG.md seguindo o formato Keep a Changelog
+- Documentação detalhada de todas as alterações desde o início do projeto
+- Organização clara com seções e emojis para melhor legibilidade
+- Links para releases no GitHub
+
 ## [1.0.0] - 2024-04-26
 
 ### ✨ Adicionado
